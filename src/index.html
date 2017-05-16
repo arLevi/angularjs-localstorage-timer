@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Angular Countdown LocalStorage Timer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Angular Countdown LocalStorage Timer</h1>
+        <p>Countdown and place all the information in localstoage. when the timer reach 0 - the last updated time will be saved.</p>
+        <p>For debugging purposes I recommend <a href="https://addons.mozilla.org/en-US/firefox/addon/firestorage/" target="_blank"> FireStorage Plus! </a> and view the console logs</p>
+      </div>
+    </header>
+
+    <div ng-controller="GenericCtrl">
+        <h3> Define our timer </h3>
+        <table>
+            <tr>
+                <td> LocalStorage Timer ID/Name</td>
+                <td> <input ng-model="properties.id" type="text" /> </td>
+            </tr>
+            <tr>
+                <td> Start from </td>
+                <td> <input name="count_from" ng-model="properties.counter" type="number" /> </td>
+            </tr>
+            <tr>
+                <td> Interval </td>
+                <td> <input name="counter_interval" ng-model="properties.interval" type="number" /> </td>
+            </tr>
+            <tr>
+                <td> Reload existing timer with same ID above ?</td>
+                <td> <button ng-click="reload()"> Reload "{{ properties.id }}" </button> </td>
+            </tr>
+            <tr>
+                <td> Create new timer based on paraemetrs above ? </td>
+                <td> <button ng-click="recreate()"> Create new </button> </td>
+            </tr>
+            <tr ng-if="AppTimer">
+                <td> Remove this timer ? </td>
+                <td> <button ng-click="AppTimer.remove()"> Remove </button> </td>
+            </tr>
+
+            <tr ng-if="AppTimer">
+                <td> Timer Actions </td>
+                <td>
+                    <button ng-click="AppTimer.restart()">   Restart</button>
+                    <button ng-click="AppTimer.start()">     Start</button>
+                    <button ng-click="resume()">             Resume</button>
+                    <button ng-click="AppTimer.stop()">      Stop</button>
+                </td>
+            </tr>
+        </table>
+
+        <div ng-if="AppTimer">
+            <h3> Timer "live" information </h3>
+            <table>
+                <tr>
+                    <td> What's the current counter value ? </td>
+                    <td> {{ TimerRunning.counter || properties.counter }} </td>
+                </tr>
+                <tr>
+                    <td> Last updated </td>
+                    <td> {{ TimerRunning.last_updated | date : "yyyy-MM-dd HH:mm:ss Z" }} </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.js"></script>
+    <script type="text/javascript" src="localstorage-countdown-timer.js"></script>
+    <script type="text/javascript" src="demo/countdown.js"></script>
+  </body>
+</html>
+

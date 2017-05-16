@@ -1,0 +1,23 @@
+{
+  "name": "angularjs-localstorage-timer",
+  "version": "1.0.4",
+  "description": "Countdown timer which uses the LocalStorage to store the information. You can create several ones, change their interval, and reset it. once it's reaches 0 - the last update time is saved in the LocalStorage information as well.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ricky Levi",
+  "license": "ISC",
+  "readme": "README.md",
+  "devDependencies": {
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8"
+  },
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}
