@@ -6,7 +6,7 @@
 > -You want to get notified when the time is up ( Event ) and trigger something.
 
 ```shell
-$ npm install --save angularjs-localstorage-timer 
+$ npm install --save angularjs-localstorage-timer
 ```
 
 ## Usage example
@@ -39,7 +39,7 @@ var myApp = angular.module('myApp', ['localstorage-countdown-timer'])
 .controller('GenericCtrl', ['$rootScope', '$scope', 'CountDownTimer', function ($rootScope, $scope, CountDownTimer) {
     // Inside your controller...
     $scope.AppTimer = new CountDownTimer({ ... parameters from above ... });
-    
+
     $scope.$on('CountDownTimerChangeEvent', function () {
         // Event that is triggered on every $interval ( 1000 - every 1s )
         // ... do code here ...
@@ -49,7 +49,7 @@ var myApp = angular.module('myApp', ['localstorage-countdown-timer'])
         // Event that is triggered when the timer reaches zero (0)
         // ... do code here ...
     });
-}]);    
+}]);
 ```
 
 ## Timer Functions
@@ -72,6 +72,14 @@ Restart the timer with the values given when creating the timer.
 Timer won't start running, need to use `start()`
 ```html
 <button ng-click="AppTimer.restart()"> Restart </button>
+```
+
+### .update()
+Update one of the parameters given to the `new CountDownTimer()`'s properties ( id, counter etc .. )
+The update action will save the values into `LocalStorage` as well, but won't restart the timer.
+Timer won't start running, need to use `start()`
+```html
+<button ng-click="AppTimer.update('counter', 120)"> Update </button>
 ```
 
 ## Timer Information
